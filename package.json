@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "ExpressJS Application serving GraphQL queries",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/server.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,8 @@
     "express": "^4.18.2",
     "express-graphql": "^0.12.0",
     "graphql": "^15.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
