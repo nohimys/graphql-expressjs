@@ -1,0 +1,24 @@
+{
+  "name": "graphql-expressjs",
+  "version": "1.0.0",
+  "description": "ExpressJS Application serving GraphQL queries",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nohimys/graphql-expressjs.git"
+  },
+  "author": "Nohim Godage",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nohimys/graphql-expressjs/issues"
+  },
+  "homepage": "https://github.com/nohimys/graphql-expressjs#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.8.0"
+  }
+}
