@@ -3,7 +3,7 @@ import { graphqlHTTP } from "express-graphql"
 import {
     GraphQLObjectType,
     GraphQLSchema,
-    GraphQLList, GraphQLInt
+    GraphQLList, GraphQLInt, GraphQLString
 } from 'graphql'
 import {authors, books} from "./mockData.js";
 import {BookType, AuthorType} from './Types.js'
@@ -34,10 +34,14 @@ const RootQueryType = new GraphQLObjectType({
             type: AuthorType,
             description: 'A single Author',
             args: {
-                id: {type: GraphQLInt}
+                id: {type: GraphQLInt},
+                name: {type: GraphQLString},
             },
             resolve: (parentAuthorObject, args) => {
-                return authors.find(author => author.id === args.id);
+                if(args.id){
+                    return authors.find(author => author.id === args.id);
+                }
+                return authors.find(author => author.name === args.name);
             }
         },
         authors:{
