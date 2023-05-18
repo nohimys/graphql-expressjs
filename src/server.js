@@ -30,6 +30,16 @@ const RootQueryType = new GraphQLObjectType({
             description: 'List of all books',
             resolve: () => books
         },
+        author:{
+            type: AuthorType,
+            description: 'A single Author',
+            args: {
+                id: {type: GraphQLInt}
+            },
+            resolve: (parentAuthorObject, args) => {
+                return authors.find(author => author.id === args.id);
+            }
+        },
         authors:{
             type: new GraphQLList(AuthorType),
             description: 'List of all authors',

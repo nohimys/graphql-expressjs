@@ -39,3 +39,11 @@ name
 }
 }
 }
+
+### Sample Query 04
+
+{
+author (id: 1) {
+name
+}
+}
