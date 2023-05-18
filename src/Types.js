@@ -2,9 +2,9 @@ import {
     GraphQLObjectType,
     GraphQLString,
     GraphQLInt,
-    GraphQLNonNull
+    GraphQLNonNull, GraphQLList
 } from "graphql";
-import {authors} from "./mockData.js";
+import {authors, books} from "./mockData.js";
 
 export const BookType = new GraphQLObjectType({
     name: 'BookType',
@@ -30,5 +30,37 @@ export const AuthorType = new GraphQLObjectType({
     fields: () => ({
         id: {type: GraphQLNonNull(GraphQLInt)},
         name: {type: GraphQLNonNull(GraphQLString)},
+        books: {
+            type: GraphQLNonNull(GraphQLList(BookType)),
+            resolve: (author) => {
+                return books.filter((book) => {
+                    return author.id === book.authorId;
+                });
+            }
+        }
     })
 });
+
+//Sample Query 01
+// {
+//     books {
+//     id
+//     name
+//     authorId
+//     author {
+//         name
+//     }
+// }
+// }
+
+//Sample Query 01
+// {
+//     authors {
+//     id
+//     name
+//     books {
+//         name
+//         id
+//     }
+// }
+// }
