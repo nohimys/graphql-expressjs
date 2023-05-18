@@ -5,8 +5,8 @@ import {
     GraphQLSchema,
     GraphQLList
 } from 'graphql'
-import {books} from "./mockData.js";
-import {BookType} from './Types.js'
+import {authors, books} from "./mockData.js";
+import {BookType, AuthorType} from './Types.js'
 
 const PORT = 5001;
 const app = express();
@@ -19,6 +19,11 @@ const RootQueryType = new GraphQLObjectType({
             type: new GraphQLList(BookType),
             description: 'List of all books',
             resolve: () => books
+        },
+        authors:{
+            type: new GraphQLList(AuthorType),
+            description: 'List of all authors',
+            resolve: () => authors
         },
     })
 });
