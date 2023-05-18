@@ -3,7 +3,7 @@ import { graphqlHTTP } from "express-graphql"
 import {
     GraphQLObjectType,
     GraphQLSchema,
-    GraphQLList, GraphQLInt, GraphQLString
+    GraphQLList, GraphQLInt, GraphQLString, GraphQLNonNull
 } from 'graphql'
 import {authors, books} from "./mockData.js";
 import {BookType, AuthorType} from './Types.js'
@@ -52,9 +52,34 @@ const RootQueryType = new GraphQLObjectType({
     })
 });
 
+const RootMutationType = new GraphQLObjectType({
+    name: 'Mutation',
+    description: 'Root Mutation for Update Operations',
+    fields: () => ({
+        addBook: {
+            type: BookType,
+            description: 'Create New Book',
+            args: {
+                name: {type: GraphQLNonNull(GraphQLString)},
+                authorId: {type: GraphQLNonNull(GraphQLInt)},
+            },
+            resolve: (parent, args) => {
+                const book = {
+                    id: books.length + 1,
+                    name: args.name,
+                    authorId: args.authorId
+                }
+                books.push(book);
+                return book;
+            }
+        }
+    })
+});
+
 
 const schema = new GraphQLSchema({
-    query: RootQueryType
+    query: RootQueryType,
+    mutation: RootMutationType
 });
 
 

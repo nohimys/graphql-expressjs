@@ -69,3 +69,14 @@ Get all books by author name
   }
 }
 ```
+
+### Sample Query 06
+Add new book to array
+```
+mutation{
+  addBook ( name: "Atomic Habbits", authorId: 1) {
+    name
+    authorId
+  }
+}
+```
