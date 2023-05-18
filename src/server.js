@@ -3,7 +3,7 @@ import { graphqlHTTP } from "express-graphql"
 import {
     GraphQLObjectType,
     GraphQLSchema,
-    GraphQLList
+    GraphQLList, GraphQLInt
 } from 'graphql'
 import {authors, books} from "./mockData.js";
 import {BookType, AuthorType} from './Types.js'
@@ -15,6 +15,16 @@ const RootQueryType = new GraphQLObjectType({
     name:'Query',
     description: 'This is the Root Query',
     fields: () => ({
+        book:{
+            type: BookType,
+            description: 'A single book',
+            args: {
+                id: {type: GraphQLInt}
+            },
+            resolve: (bookObject, args) => {
+                return books.find(book => book.id === args.id);
+            }
+        },
         books:{
             type: new GraphQLList(BookType),
             description: 'List of all books',

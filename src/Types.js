@@ -40,27 +40,3 @@ export const AuthorType = new GraphQLObjectType({
         }
     })
 });
-
-//Sample Query 01
-// {
-//     books {
-//     id
-//     name
-//     authorId
-//     author {
-//         name
-//     }
-// }
-// }
-
-//Sample Query 01
-// {
-//     authors {
-//     id
-//     name
-//     books {
-//         name
-//         id
-//     }
-// }
-// }
