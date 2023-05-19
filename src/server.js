@@ -6,7 +6,8 @@ import {
     GraphQLList, GraphQLInt, GraphQLString, GraphQLNonNull
 } from 'graphql'
 import {authors, books} from "./mockData.js";
-import {BookType, AuthorType} from './Types.js'
+import { AuthorType } from './types/AuthorType.js'
+import { BookType } from './types/BookType.js'
 
 const PORT = 5001;
 const app = express();
