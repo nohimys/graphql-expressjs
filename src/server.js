@@ -82,26 +82,6 @@ const schema = new GraphQLSchema({
     mutation: RootMutationType
 });
 
-
-//How to query in the browser for the below thing
-// {
-//     message
-// }
-
-//Define Schema
-//Previous Example
-// const schema = new GraphQLSchema({
-//     query: new GraphQLObjectType({
-//         name:'HelloWorld',
-//         fields: () => ({
-//             message: {
-//                 type: GraphQLString,
-//                 resolve: () => 'Hello World'
-//             }
-//         })
-//     })
-// });
-
 //Register serving route
 app.use('/graphql', graphqlHTTP({
     schema,
